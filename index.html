@@ -3,166 +3,160 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>A Little Surprise ❤️</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ffd6e5, #fff0f5);
-      color: #3d2530;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 430px;
-      background: white;
-      padding: 30px 22px;
-      border-radius: 24px;
-      text-align: center;
-      box-shadow: 0 15px 40px rgba(150, 50, 90, 0.18);
-    }
-
-    h1 {
-      margin-top: 0;
-      font-size: 30px;
-    }
-
-    .message {
-      line-height: 1.6;
-      color: #6d4a58;
-      margin-bottom: 25px;
-    }
-
-    .option {
-      width: 100%;
-      border: none;
-      margin: 9px 0;
-      padding: 16px;
-      border-radius: 14px;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-      background: #ffedf3;
-      color: #9b3155;
-      transition: 0.2s;
-    }
-
-    .option:hover {
-      background: #ffcadc;
-      transform: translateY(-2px);
-    }
-
-    #result {
-      display: none;
-      margin-top: 22px;
-      padding: 18px;
-      border-radius: 14px;
-      background: #fff7fa;
-      line-height: 1.5;
-    }
-
-    .whatsapp-button {
-      display: inline-block;
-      margin-top: 14px;
-      padding: 12px 18px;
-      text-decoration: none;
-      border-radius: 12px;
-      background: #25d366;
-      color: white;
-      font-weight: bold;
-    }
-
-    .heart {
-      font-size: 45px;
-      margin-bottom: 10px;
-    }
-
-    .footer {
-      margin-top: 22px;
-      font-size: 13px;
-      color: #a47c8c;
-    }
-  </style>
+  <meta name="theme-color" content="#190914" />
+  <title>A Little World for You ❤️</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <div class="card">
-    <div class="heart">❤️</div>
-
-    <h1>Choose Your Surprise</h1>
-
-    <p class="message">
-      Hi love! I wanted to do something special for you.
-      Choose one option, and I will make it happen.
-    </p>
-
-    <button class="option" onclick="selectGift('Bouquet 💐')">
-      💐 I want a bouquet
-    </button>
-
-    <button class="option" onclick="selectGift('Love Letter 💌')">
-      💌 I want a handwritten letter
-    </button>
-
-    <button class="option" onclick="selectGift('Virtual Date 🍕')">
-      🍕 I want a virtual date night
-    </button>
-
-    <button class="option" onclick="selectGift('Mystery Surprise 🎁')">
-      🎁 Surprise me
-    </button>
-
-    <div id="result">
-      <strong id="selectedText"></strong>
-
-      <p>
-        Send your choice to me so I can start planning it ❤️
-      </p>
-
-      <a id="whatsappLink" class="whatsapp-button" href="#">
-        Send my choice
-      </a>
-    </div>
-
-    <div class="footer">
-     Made with love, just for you ❤️.
-    </div>
+  <div class="lights" aria-hidden="true">
+    <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+    <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+    <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
   </div>
 
-  <script>
-    function selectGift(choice) {
-      const result = document.getElementById("result");
-      const selectedText = document.getElementById("selectedText");
-      const whatsappLink = document.getElementById("whatsappLink");
+  <div id="effects" aria-hidden="true"></div>
 
-      selectedText.textContent = "You selected: " + choice;
+  <section id="welcome" class="screen active">
+    <div class="content">
+      <div class="hero-teddy">🧸</div>
+      <h1 class="script">Hey Beautiful</h1>
+      <p class="subtitle">
+        I made this little world just for you.<br />
+        Every click is a hug, and every surprise is a piece of my heart.
+      </p>
+      <button class="primary" onclick="showScreen('menu')">Yes, I’m Ready! ✨</button>
+    </div>
+  </section>
 
-      const phoneNumber = "13264678487";
-      const message =
-        "Hi Harsha ❤️ I scanned your QR code and selected: " + choice;
+  <section id="menu" class="screen">
+    <div class="content">
+      <h2 class="script">Choose Your Surprise</h2>
+      <p class="subtitle">Pick one… or explore them all. Each one was made with love.</p>
 
-      whatsappLink.href =
-        "https://wa.me/" +
-        phoneNumber +
-        "?text=" +
-        encodeURIComponent(message);
+      <div class="gift-grid">
+        <button class="gift-card" onclick="openGift('bouquet')">
+          <span class="gift-icon">💐</span>
+          <h3>Virtual Bouquet</h3>
+          <p>A bouquet that never fades.</p>
+        </button>
 
-      result.style.display = "block";
-      result.scrollIntoView({
-        behavior: "smooth"
-      });
-    }
-  </script>
+        <button class="gift-card" onclick="openGift('letter')">
+          <span class="gift-icon">💌</span>
+          <h3>A Love Letter</h3>
+          <p>Words straight from my heart.</p>
+        </button>
+
+        <button class="gift-card" onclick="openGift('dreamdate')">
+          <span class="gift-icon">🌙</span>
+          <h3>Our Dream Date</h3>
+          <p>A tiny glimpse of a perfect day together.</p>
+        </button>
+
+        <button class="gift-card" onclick="openGift('memoryjar')">
+          <span class="gift-icon">🫙</span>
+          <h3>Memory Jar</h3>
+          <p>Little reasons why you mean so much to me.</p>
+        </button>
+      </div>
+
+      <div class="progress" aria-label="Surprises opened">
+        <span class="dot" data-gift="bouquet"></span>
+        <span class="dot" data-gift="letter"></span>
+        <span class="dot" data-gift="dreamdate"></span>
+        <span class="dot" data-gift="memoryjar"></span>
+      </div>
+
+      <button id="finalUnlock" class="love-btn hidden" onclick="showFinal()">
+        One Last Surprise ❤️
+      </button>
+    </div>
+    <div class="corner-teddy">🧸</div>
+  </section>
+
+  <section id="bouquet" class="screen">
+    <div class="content">
+      <h2 class="script">A Virtual Bouquet</h2>
+      <p class="subtitle">Because real flowers fade, but my love for you never will.</p>
+      <div class="bouquet-wrap">
+        <div class="bouquet">💐</div>
+      </div>
+      <div class="note-card">
+        <strong>For the most beautiful person 🌹</strong>
+        <p>You make my world brighter just by being in it.</p>
+      </div>
+      <button class="back" onclick="showScreen('menu')">Back to Surprises</button>
+    </div>
+    <div class="corner-teddy">🧸</div>
+  </section>
+
+  <section id="letter" class="screen">
+    <div class="content">
+      <div class="envelope">💌</div>
+      <h2 class="script">A Love Letter</h2>
+      <div class="letter-paper">
+        My Dearest,<br /><br />
+        From the moment you walked into my life, ordinary days began to feel special.
+        You make me smile in ways I cannot explain, and you make the distance feel smaller
+        just by being there.<br /><br />
+        Thank you for your patience, your kindness, your laughter, and for being exactly
+        who you are. I may not always find the perfect words, but I will always keep choosing you,
+        caring for you, and loving you a little more every day.<br /><br />
+        Forever yours,<br />
+        Harsha ❤️
+      </div>
+      <button class="back" onclick="showScreen('menu')">Back to Surprises</button>
+    </div>
+  </section>
+
+  <section id="dreamdate" class="screen">
+    <div class="content">
+      <h2 class="script">Our Dream Date</h2>
+      <p class="subtitle">A small preview of the beautiful days I want to spend with you.</p>
+      <div class="date-grid">
+        <div class="date-card"><div class="emoji">☕</div><h3>Cozy Café</h3><p>Long talks, warm coffee, and no hurry to leave.</p></div>
+        <div class="date-card"><div class="emoji">🌅</div><h3>Sunset Walk</h3><p>Your hand in mine while the sky changes colors.</p></div>
+        <div class="date-card"><div class="emoji">🌊</div><h3>Beach Evening</h3><p>Waves, silly pictures, and your favorite snacks.</p></div>
+        <div class="date-card"><div class="emoji">✨</div><h3>Stargazing</h3><p>A quiet night under the stars, talking about our future.</p></div>
+      </div>
+      <button class="back" onclick="showScreen('menu')">Back to Surprises</button>
+    </div>
+    <div class="corner-teddy">🧸</div>
+  </section>
+
+  <section id="memoryjar" class="screen">
+    <div class="content">
+      <h2 class="script">A Jar Full of Love</h2>
+      <div class="jar">🫙✨</div>
+      <div class="jar-card">
+        <p>Tap a note whenever you need a reminder of how special you are.</p>
+        <div class="reason-list">
+          <button class="reason" onclick="revealReason(this, 'Your smile can change my entire day. 😊')">Open note 1</button>
+          <button class="reason" onclick="revealReason(this, 'You care deeply, and that makes you beautiful inside and out. 💗')">Open note 2</button>
+          <button class="reason" onclick="revealReason(this, 'Even normal conversations with you become my favorite memories. 🧸')">Open note 3</button>
+          <button class="reason" onclick="revealReason(this, 'You are my comfort, my happiness, and my favorite person. ❤️')">Open note 4</button>
+          <button class="reason" onclick="revealReason(this, 'You + Me = a future I cannot wait to live. ✨')">Open note 5</button>
+        </div>
+      </div>
+      <button class="back" onclick="showScreen('menu')">Back to Surprises</button>
+    </div>
+  </section>
+
+  <section id="final" class="screen">
+    <div class="content">
+      <div class="final-heart">❤️</div>
+      <h2 class="script">You’re My Greatest Surprise</h2>
+      <p class="subtitle">
+        You were never choosing gifts.<br />
+        You were opening little pieces of my heart.<br /><br />
+        Thank you for being part of my life. Every moment with you is something I cherish.
+      </p>
+      <button class="love-btn" onclick="celebrateFinal()">This Made Me Smile 😊</button>
+      <p class="tiny">Made with endless love, just for you.</p>
+    </div>
+    <div class="corner-teddy">🧸</div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
