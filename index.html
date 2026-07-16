@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>A Little Surprise ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd6e5, #fff0f5);
+      color: #3d2530;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 430px;
+      background: white;
+      padding: 30px 22px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(150, 50, 90, 0.18);
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 30px;
+    }
+
+    .message {
+      line-height: 1.6;
+      color: #6d4a58;
+      margin-bottom: 25px;
+    }
+
+    .option {
+      width: 100%;
+      border: none;
+      margin: 9px 0;
+      padding: 16px;
+      border-radius: 14px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #ffedf3;
+      color: #9b3155;
+      transition: 0.2s;
+    }
+
+    .option:hover {
+      background: #ffcadc;
+      transform: translateY(-2px);
+    }
+
+    #result {
+      display: none;
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 14px;
+      background: #fff7fa;
+      line-height: 1.5;
+    }
+
+    .whatsapp-button {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 12px 18px;
+      text-decoration: none;
+      border-radius: 12px;
+      background: #25d366;
+      color: white;
+      font-weight: bold;
+    }
+
+    .heart {
+      font-size: 45px;
+      margin-bottom: 10px;
+    }
+
+    .footer {
+      margin-top: 22px;
+      font-size: 13px;
+      color: #a47c8c;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="heart">❤️</div>
+
+    <h1>Choose Your Surprise</h1>
+
+    <p class="message">
+      Hi love! I wanted to do something special for you.
+      Choose one option, and I will make it happen.
+    </p>
+
+    <button class="option" onclick="selectGift('Bouquet 💐')">
+      💐 I want a bouquet
+    </button>
+
+    <button class="option" onclick="selectGift('Love Letter 💌')">
+      💌 I want a handwritten letter
+    </button>
+
+    <button class="option" onclick="selectGift('Virtual Date 🍕')">
+      🍕 I want a virtual date night
+    </button>
+
+    <button class="option" onclick="selectGift('Mystery Surprise 🎁')">
+      🎁 Surprise me
+    </button>
+
+    <div id="result">
+      <strong id="selectedText"></strong>
+
+      <p>
+        Send your choice to me so I can start planning it ❤️
+      </p>
+
+      <a id="whatsappLink" class="whatsapp-button" href="#">
+        Send my choice
+      </a>
+    </div>
+
+    <div class="footer">
+      Made with love, just for you.
+    </div>
+  </div>
+
+  <script>
+    function selectGift(choice) {
+      const result = document.getElementById("result");
+      const selectedText = document.getElementById("selectedText");
+      const whatsappLink = document.getElementById("whatsappLink");
+
+      selectedText.textContent = "You selected: " + choice;
+
+      const phoneNumber = "13264678487";
+      const message =
+        "Hi Harsha ❤️ I scanned your QR code and selected: " + choice;
+
+      whatsappLink.href =
+        "https://wa.me/" +
+        phoneNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+      result.style.display = "block";
+      result.scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+  </script>
+</body>
+</html>
